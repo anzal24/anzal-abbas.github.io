@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anzal Abbas Jaffari - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,0 1000,100 0,20"/></svg>') bottom;
+            background-size: cover;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #34495e;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-item a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-item a:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #3498db;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        /* Profile Section */
+        .profile {
+            font-size: 1.1rem;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .profile-card h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Work Experience */
+        .job {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #e74c3c;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            flex: 1;
+        }
+
+        .job-title h3 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-company {
+            color: #e74c3c;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .job-position {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .job-duration {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .job-description {
+            margin-top: 1rem;
+        }
+
+        .job-description ul {
+            margin-left: 1.5rem;
+        }
+
+        .job-description li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .job-description li::marker {
+            color: #3498db;
+        }
+
+        /* Publications */
+        .publication {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #9b59b6;
+        }
+
+        .publication a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .publication a:hover {
+            text-decoration: underline;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #f39c12;
+        }
+
+        .education-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .education-school {
+            color: #f39c12;
+            font-weight: 600;
+        }
+
+        .education-duration {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #1abc9c;
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Leadership */
+        .leadership-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #27ae60;
+        }
+
+        .leadership-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .leadership-duration {
+            color: #27ae60;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .education-details {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Anzal Abbas Jaffari</h1>
+                <p>Health, Education & International Development Professional</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>anzal.abbas71@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>+44-7594248634</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>London, United Kingdom</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#profile">Profile</a></li>
+                <li class="nav-item"><a href="#experience">Experience</a></li>
+                <li class="nav-item"><a href="#publications">Publications</a></li>
+                <li class="nav-item"><a href="#education">Education</a></li>
+                <li class="nav-item"><a href="#leadership">Leadership</a></li>
+                <li class="nav-item"><a href="#skills">Skills</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Profile Section -->
+            <section id="profile" class="section profile fade-in">
+                <h2>Profile</h2>
+                <p>4+ years' health/education & international development experience across research, program management, strategic planning, and policy advocacy</p>
+                
+                <div class="profile-grid">
+                    <div class="profile-card">
+                        <h3>Program Delivery</h3>
+                        <p>Designed and managed programs reaching 1,500+ students across different schools in Karachi</p>
+                    </div>
+                    <div class="profile-card">
+                        <h3>Monitoring & Evaluation</h3>
+                        <p>Created monitoring systems that improved project outcomes across different UN-funded initiatives</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section id="experience" class="section fade-in">
+                <h2>Work Experience</h2>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h3>World Health Organization (WHO)</h3>
+                            <div class="job-company">London, United Kingdom</div>
+                            <div class="job-position">Studentship (Research consultancy at LSE)</div>
+                        </div>
+                        <div class="job-duration">November 2024 - March 2025</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Conducted a scoping review for WHO on Health financing and Accreditation in LMICs</li>
+                            <li>Reviewed 200+ academic papers and synthesized findings from 50+ relevant studies on health financing and accreditation in LMICs</li>
+                            <li>Delivered 3 research progress presentations to senior WHO supervisors</li>
+                            <li>Contributed to proposal development, systematic review methodology, report writing, and presentation of findings to WHO supervisors</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h3>RJ4ALL</h3>
+                            <div class="job-company">London, United Kingdom</div>
+                            <div class="job-position">Research and Health Intern</div>
+                        </div>
+                        <div class="job-duration">November 2023 - June 2024</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Designed and conducted educational assessments to evaluate the effectiveness of public health programs involving NHS professionals</li>
+                            <li>Managing and streamlining data input across platforms, ensuring accurate record-keeping for project reporting</li>
+                            <li>Drafting key communication materials and maintaining effective partnerships with internal and external partner/stakeholders</li>
+                            <li>Managed database organization for external project</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h3>Aahung</h3>
+                            <div class="job-company">Karachi, Pakistan</div>
+                            <div class="job-position">Research Associate</div>
+                        </div>
+                        <div class="job-duration">March 2023 - August 2024</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Developed and implemented a Monitoring & Evaluation framework that improved project outcomes</li>
+                            <li>Facilitated in developing actionable recommendations for different UN funded and other international organizations (Girls fund, NORAD, CRR) initiatives and presented it to policy makers</li>
+                            <li>Managed multi-disciplinary primary research studies in public health - focusing on maternity health, SRHR, and child marriage</li>
+                            <li>Wrote grant proposals for project funding, secured key partnerships and financial support</li>
+                            <li>Co-ordinated policy advocacy initiatives in Sexual and Reproductive Health Rights (SRHR), aiming to contribute to the development of national youth health strategies that engaged over 100 key stakeholders</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h3>Bagh-e-Sakina</h3>
+                            <div class="job-company">Karachi, Pakistan</div>
+                            <div class="job-position">Founder, CEO</div>
+                        </div>
+                        <div class="job-duration">December 2022 - Ongoing</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Secured a 2 years fellowship of ISD Global -- Young Cities & Hive Pakistan</li>
+                            <li>Spearheaded the creation and growth of an organization focused on youth empowerment, with a focus on strategic planning, team building, and organizational scaling</li>
+                            <li>Curated partnership strategies that brought in over 7 key organizational alliances in the education and health sectors</li>
+                            <li>Prepared and delivered teacher training programs for 30+ educators, equipping the participants with strategies for teaching children's rights, civic engagement, and promoting social-emotional learning</li>
+                            <li>Supervised the design and implementation of an innovative critical thinking and civic engagement program for over 1,500 students</li>
+                            <li>Secured $8,000 in funding through strategic proposal writing and stakeholder collaboration to benefit over 5000 young individuals</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h3>Getz Pharma</h3>
+                            <div class="job-company">Karachi, Pakistan</div>
+                            <div class="job-position">Research Associate</div>
+                        </div>
+                        <div class="job-duration">May 2021 - January 2023</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Facilitated the management and implementation of Pak-SEHAT -- National Study on Cardiovascular Diseases, coordinating a team of 10+ doctors and project stakeholders</li>
+                            <li>Planning and implementation of 'Cultivating Well-Being' - Mental Health Project to train GPs across Karachi in mental health management strategies</li>
+                            <li>Worked with Government of Sindh and the Indus Hospital for Rabies Free Pakistan initiative. Overall, 36,997 dogs got vaccinated and 11,397 sterilized between 2018 and 2022</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h3>The Provincial Assembly of Sindh</h3>
+                            <div class="job-company">Karachi, Pakistan</div>
+                            <div class="job-position">Research Associate, Parliamentary Service Internship</div>
+                        </div>
+                        <div class="job-duration">November 2020 - March 2021</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Supporting the Member Provincial Assembly (MPA) in the research of laws, advocacy of policy, social media management & the management of MPA's constituency affairs</li>
+                            <li>Engagement with public departments like KMC, Municipal Corporation, and Assembly Secretariat to resolve public issues</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Publications -->
+            <section id="publications" class="section fade-in">
+                <h2>Publications</h2>
+                
+                <div class="publication">
+                    <strong>LSE International Development Blogs:</strong> <a href="https://blogs.lse.ac.uk/internationaldevelopment/2025/06/10/pakistans-struggle-to-improve-maternal-and-neonatal-mortality-ratios/" target="_blank">Pakistan's Struggle to improve maternal and neo-natal mortality ratios</a>
+                </div>
+                
+                <div class="publication">
+                    <strong>LSE International Development Blogs:</strong> <a href="https://blogs.lse.ac.uk/internationaldevelopment/2025/05/16/grassroots-responses-to-pakistans-education-crisis/" target="_blank">Grassroots Responses to Pakistan's Education Crisis</a>
+                </div>
+                
+                <div class="publication">
+                    <strong>LSE International Development Blogs:</strong> <a href="https://blogs.lse.ac.uk/internationaldevelopment/2025/04/16/how-global-systems-shape-what-we-eat-and-who-gets-to-eat/" target="_blank">How Global Systems Shape What We Eat and Who Gets to Eat</a>
+                </div>
+                
+                <div class="publication">
+                    <strong>LSE International Development Blogs:</strong> <a href="https://blogs.lse.ac.uk/internationaldevelopment/2025/03/18/how-private-sector-influence-undermines-independent-research-and-public-health-in-pakistan/" target="_blank">How private sector influence undermines independent research and public health in Pakistan</a>
+                </div>
+                
+                <div class="publication">
+                    <strong>Book Chapter:</strong> 'The Role & Responsibility of Pharma Industry for Standardization of Care' - Book: Diabetes and Pregnancy
+                </div>
+                
+                <div class="publication">
+                    <strong>Book Chapter:</strong> 'Guesstimating the COVID-19 burden: what is the best model?' - Book: Pandemic Risk, Response, and Resilience
+                </div>
+                
+                <div class="publication">
+                    <strong>Book Chapter:</strong> 'Mass Dog Vaccination and Animal Birth control: A One Health Pilot Project in Karachi, Pakistan' - Book: One Health for Dog-mediated Rabies Elimination in Asia
+                </div>
+                
+                <div class="publication">
+                    <strong>Research Contribution:</strong> Pakistan Hypertension Guidelines 2022
+                </div>
+                
+                <div class="publication">
+                    <strong>Abstract Publications:</strong> Rabies Free Pakistan - 13th Health Sciences Research Assembly & SBCC 2022
+                </div>
+                
+                <div class="publication">
+                    <strong>Research Paper:</strong> Comparative Analysis of KPK and Sindh Assembly - 2nd International Conference, CEBR IBA
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section id="education" class="section fade-in">
+                <h2>Education</h2>
+                
+                <div class="education-item">
+                    <h3>MSc. Health and International Development</h3>
+                    <div class="education-details">
+                        <div class="education-school">London School of Economics and Political Science (LSE)</div>
+                        <div class="education-duration">September 2023 - September 2024</div>
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #7f8c8d;">London, United Kingdom</div>
+                </div>
+                
+                <div class="education-item">
+                    <h3>BSc Honors - Social Development and Policy</h3>
+                    <div class="education-details">
+                        <div class="education-school">Habib University</div>
+                        <div class="education-duration">August 2017 - May 2021</div>
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #7f8c8d;">Karachi, Pakistan • GPA: 3.71/4</div>
+                </div>
+            </section>
+
+            <!-- Leadership -->
+            <section id="leadership" class="section fade-in">
+                <h2>Voluntary Leadership Experiences</h2>
+                
+                <div class="leadership-item">
+                    <h3>Global Partnership for Education (World Bank Supported) Youth Leader from Pakistan</h3>
+                    <div class="leadership-duration">May 2022 - January 2024</div>
+                    <ul>
+                        <li>Represented Pakistan's youth at the Global Partnership for Education</li>
+                        <li>Advocated for increased education financing and raising awareness about global barriers to education</li>
+                        <li>Worked with international policymakers, NGOs, and education-focused organizations to align global education goals with local development priorities</li>
+                    </ul>
+                </div>
+                
+                <div class="leadership-item">
+                    <h3>Associate Festival Director Global South Arts and Health Week - Pakistani Pavilion</h3>
+                    <div class="leadership-duration">August 2024</div>
+                    <ul>
+                        <li>Lead and coordinated the Global South Arts and Health Week in Pakistan, engaging 30+ social impact organizations</li>
+                        <li>Organizations participated in conducting activities</li>
+                    </ul>
+                </div>
+                
+                <div class="leadership-item">
+                    <h3>President Habib University Student Government</h3>
+                    <div class="leadership-duration">Academic Year</div>
+                    <ul>
+                        <li>Collaborated with heads of administrative departments at Habib University, including the Office of the Dean and Assistant Deans to draft policies related to students</li>
+                        <li>Represented the student community by addressing concerns, and overseeing 28 clubs and chapters</li>
+                        <li>Contributed to the development of the Spring Semester 2020 grade policy and transportation policy</li>
+                        <li>Planned the New Student Orientation program at Habib University</li>
+                        <li>Managed to formulate a 52-page Constitution to detail out the student government's administrative relationships</li>
+                    </ul>
+                </div>
+                
+                <div class="leadership-item">
+                    <h3>LSE Congress</h3>
+                    <div class="leadership-duration">Academic Program</div>
+                    <p>LSE Congress is a simulation activity where students explore how LSE's research can contribute to the progress towards the UN 2030 Agenda for Sustainable Development</p>
+                    <ul>
+                        <li>Developed a strategy for exploring LSE's international development department's research expertise</li>
+                        <li>Created advance pitch submission for the summit</li>
+                        <li>Liaison with mentors</li>
+                        <li>Produced different media for different audiences -- research poster and video</li>
+                        <li>Implemented the strategy for researching ID department's research expertise</li>
+                        <li>Analysis of the links between research expertise and SDGs</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills" class="section fade-in">
+                <h2>Skills</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Data Analysis</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MAXQDA</span>
+                            <span class="skill-tag">NVIVO</span>
+                            <span class="skill-tag">Atlas</span>
+                            <span class="skill-tag">Excel</span>
+                            <span class="skill-tag">Stata</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Technical Skills</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Data Visualization</span>
+                            <span class="skill-tag">Reporting</span>
+                            <span class="skill-tag">Microsoft Office</span>
+                            <span class="skill-tag">Canva</span>
+                            <span class="skill-tag">Adobe Premiere Pro</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Research & Design</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Service Blueprinting</span>
+                            <span class="skill-tag">Empathy Mapping</span>
+                            <span class="skill-tag">Qualitative Research</span>
+                            <span class="skill-tag">Quantitative Research</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Languages</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">English (Fluent)</span>
+                            <span class="skill-tag">Urdu (Native)</span>
+                            <span class="skill-tag">Punjabi (Conversant)</span>
+                            <span class="skill-tag">Arabic (Basic)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.1s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Active navigation highlight
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-item a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
